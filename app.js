@@ -14,6 +14,7 @@ class App {
             this.resize();
 
             this.centerCircle = new Circle(this.stageWidth, this.stageHeight, 150);
+            this.hypoCycloid = new Circle(this.stageWidth, this.stageHeight, 10);
             
             window.requestAnimationFrame(this.animate.bind(this));
         }
@@ -32,10 +33,11 @@ class App {
             
             this.ctx.clearRect(0, 0, this.stageWidth, this.stageHeight);
 
-            this.centerCircle.draw(this.ctx, this.stageWidth / 2, this.stageHeight / 2);
+            this.centerCircle.draw(this.ctx, this.stageWidth, this.stageHeight);
+            this.hypoCycloid.cycloid(this.ctx, this.stageWidth, this.stageHeight);
         }
 }
 
-window.onload = () => {
+window.onload = function(){
     new App();
-}
+};
