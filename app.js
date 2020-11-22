@@ -13,8 +13,8 @@ class App {
             window.addEventListener('resize', this.resize.bind(this), false);
             this.resize();
 
-            this.centerCircle = new Circle(this.stageWidth, this.stageHeight, 150);
-            this.hypoCycloid = new Circle(this.stageWidth, this.stageHeight, 20);
+            this.outerCircle = new Circle(this.stageWidth, this.stageHeight, 150);
+            this.innerCircle = new Circle(this.stageWidth, this.stageHeight, 30);
             
             window.requestAnimationFrame(this.animate.bind(this));
         }
@@ -30,10 +30,10 @@ class App {
 
         animate () {
             window.requestAnimationFrame(this.animate.bind(this));
-            
             this.ctx.clearRect(0, 0, this.stageWidth, this.stageHeight);
-            this.centerCircle.draw(this.ctx, this.stageWidth, this.stageHeight);
-            this.hypoCycloid.cycloid(this.ctx, this.centerCircle.radius, this.stageWidth, this.stageHeight);
+            
+            this.outerCircle.draw(this.ctx, this.stageWidth, this.stageHeight);
+            this.innerCircle.hypoCycloid(this.ctx, this.outerCircle.radius, this.stageWidth, this.stageHeight);
         }
 }
 
