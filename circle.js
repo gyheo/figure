@@ -26,9 +26,14 @@ export class Circle {
         // 원 안의 반지름 그리기
         ctx.beginPath();
         ctx.moveTo(this.x, this.y);
-        ctx.lineTo(this.x + Math.cos(Math.PI / 4 * this.round) * (this.radius), this.y + Math.sin(Math.PI / 4 * this.round) * (this.radius));
+        ctx.lineTo(this.x + Math.cos(Math.PI / 4 * this.round) * this.radius, this.y + Math.sin(Math.PI / 4 * this.round) * this.radius);
         ctx.closePath();
         ctx.stroke();
+
+        // ctx.beginPath();
+        // ctx.moveTo(this.x, this.y);
+        // ctx.quadraticCurveTo(this,x, this.y, this.x + 1, this.y + 1);
+        // ctx.stroke();
 
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
