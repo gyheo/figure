@@ -33,8 +33,8 @@ export class Circle {
         ctx.beginPath();
         // ctx.arc(this.x + Math.cos(Math.PI / 8 * this.round) * this.radius, this.y + Math.sin(Math.PI / 8 * this.round) * this.radius, this.radius, 0, Math.PI * 2);
         ctx.moveTo(this.x + Math.cos(Math.PI / 8 * this.round) * this.radius, this.y + Math.sin(Math.PI / 8 * this.round) * this.radius);
-        // ctx.lineTo(1 + this.x + Math.cos(Math.PI / 8 * this.round) * this.radius, 1 + this.y + Math.sin(Math.PI / 8 * this.round) * this.radius);
-        // ctx.quadraticCurveTo(this.x + Math.cos(Math.PI / 8 * this.round) * this.radius, this.y + Math.sin(Math.PI / 8 * this.round) * this.radius, Math.cos(Math.PI / 8 * this.round) * this.radius,Math.cos(Math.PI / 8 * this.round) * this.radius);
+        
+        ctx.quadraticCurveTo(stageWidth / 2 + Math.cos(Math.PI / 8 * this.round) * this.radius, stageHeight / 2 + Math.cos(Math.PI / 8 * this.round) * this.radius, this.x + Math.cos(Math.PI / 8 * this.round) * this.radius, this.y + Math.sin(Math.PI / 8 * this.round) * this.radius);
         ctx.stroke();
 
         ctx.beginPath();
