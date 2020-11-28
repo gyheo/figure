@@ -14,7 +14,8 @@ class App {
             this.resize();
 
             this.outerCircle = new Circle(this.stageWidth, this.stageHeight, 150);
-            this.innerCircle = new Circle(this.stageWidth, this.stageHeight, 30);
+            this.innerCircle = new Circle(this.stageWidth, this.stageHeight, 20);
+            this.centralCircle = new Circle(this.stageWidth, this.stageHeight, 50);
             
             window.requestAnimationFrame(this.animate.bind(this));
         }
@@ -33,6 +34,7 @@ class App {
             this.ctx.clearRect(0, 0, this.stageWidth, this.stageHeight);
             
             this.outerCircle.draw(this.ctx, this.stageWidth, this.stageHeight);
+            this.centralCircle.fill(this.ctx, this.stageWidth, this.stageHeight);
             this.innerCircle.hypoCycloid(this.ctx, this.outerCircle.radius, this.stageWidth, this.stageHeight);
         }
 }
