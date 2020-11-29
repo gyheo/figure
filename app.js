@@ -13,9 +13,9 @@ class App {
             window.addEventListener('resize', this.resize.bind(this), false);
             this.resize();
 
-            this.outerCircle = new Circle(this.stageWidth, this.stageHeight, 150);
-            this.innerCircle = new Circle(this.stageWidth, this.stageHeight, 20);
-            this.centralCircle = new Circle(this.stageWidth, this.stageHeight, 50);
+            this.earthOrbit = new Circle(this.stageWidth, this.stageHeight, 150);
+            this.earth = new Circle(this.stageWidth, this.stageHeight, 20);
+            this.sun = new Circle(this.stageWidth, this.stageHeight, 50);
             
             window.requestAnimationFrame(this.animate.bind(this));
         }
@@ -33,9 +33,9 @@ class App {
             window.requestAnimationFrame(this.animate.bind(this));
             this.ctx.clearRect(0, 0, this.stageWidth, this.stageHeight);
             
-            this.outerCircle.draw(this.ctx, this.stageWidth, this.stageHeight);
-            this.centralCircle.fill(this.ctx, this.stageWidth, this.stageHeight);
-            this.innerCircle.hypoCycloid(this.ctx, this.outerCircle.radius, this.stageWidth, this.stageHeight);
+            this.earthOrbit.draw(this.ctx, this.stageWidth, this.stageHeight);
+            this.sun.fill(this.ctx, this.stageWidth, this.stageHeight);
+            this.earth.hypoCycloid(this.ctx, this.earthOrbit.radius, this.stageWidth, this.stageHeight);
         }
 }
 
