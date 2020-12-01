@@ -1,12 +1,13 @@
 export class Circle {
     round = 1;
 
-    constructor(stageWidth, stageHeight, radius) {
+    constructor(stageWidth, stageHeight, radius, color) {
         this.radius = radius;
 
         // canvas center
         this.x = stageWidth / 2;
         this.y = stageHeight / 2;
+        this.color = color;
     }
 
     // 원 그리기
@@ -18,19 +19,21 @@ export class Circle {
     }
 
     fill(ctx, stageWidth, stageHeight) {
-        ctx.fillStyle = "#f57f17";
+        ctx.fillStyle = this.color;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
         ctx.fill();
     }
 
-    hypoCycloid(ctx, radius, stageWidth, stageHeight) {
-        ctx.strokeStyle = "#0066CC";
-        ctx.fillStyle = "#0066CC";
+    revolution(ctx, radius, stageWidth, stageHeight) {
+        ctx.fillStyle = this.color;
 
         this.x = (stageWidth / 2) + Math.cos(Math.PI / 24 * this.round) * radius;
         this.y = (stageHeight / 2) + Math.sin(Math.PI / 24 * this.round) * radius;
         
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fill();
         // 원 안의 반지름 그리기
         // ctx.beginPath();
         // ctx.moveTo(this.x, this.y);
@@ -38,17 +41,10 @@ export class Circle {
         // ctx.closePath();
         // ctx.stroke();
 
-        let centerX = (stageWidth / 2) + Math.cos(Math.PI / 24 * this.round) * this.radius;
-        let centerY = (stageHeight / 2) + Math.sin(Math.PI / 24 * this.round) * this.radius;
-
         // ctx.beginPath();
         // ctx.moveTo(this.x + Math.cos(Math.PI / 8 * this.round) * this.radius, this.y + Math.sin(Math.PI / 8 * this.round) * this.radius);
         // ctx.quadraticCurveTo(stageWidth / 2 + Math.cos(Math.PI / 8 * this.round) * this.radius, stageHeight / 2 + Math.cos(Math.PI / 8 * this.round) * this.radius, this.x + Math.cos(Math.PI / 8 * this.round) * this.radius, this.y + Math.sin(Math.PI / 8 * this.round) * this.radius);
         // ctx.stroke();
-
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fill();
 
         this.round += 0.1;
 

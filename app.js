@@ -14,8 +14,9 @@ class App {
             this.resize();
 
             this.earthOrbit = new Circle(this.stageWidth, this.stageHeight, 150);
-            this.earth = new Circle(this.stageWidth, this.stageHeight, 20);
-            this.sun = new Circle(this.stageWidth, this.stageHeight, 50);
+            this.earth = new Circle(this.stageWidth, this.stageHeight, 20, "#0066CC");
+            this.moon = new Circle(this.stageWidth, this.stageHeight, 10, "#fff9c4");
+            this.sun = new Circle(this.stageWidth, this.stageHeight, 50, "#f57f17");
             
             window.requestAnimationFrame(this.animate.bind(this));
         }
@@ -35,7 +36,8 @@ class App {
             
             this.earthOrbit.draw(this.ctx, this.stageWidth, this.stageHeight);
             this.sun.fill(this.ctx, this.stageWidth, this.stageHeight);
-            this.earth.hypoCycloid(this.ctx, this.earthOrbit.radius, this.stageWidth, this.stageHeight);
+            this.moon.revolution(this.ctx, this.earthOrbit.radius + this.earth.radius + this.moon.radius, this.stageWidth, this.stageHeight);
+            this.earth.revolution(this.ctx, this.earthOrbit.radius, this.stageWidth, this.stageHeight);
         }
 }
 
